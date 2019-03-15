@@ -1,4 +1,3 @@
-
 # eStore
 
 An example e-commerce web application implemented with Java, Spring, Hibernate and MySQL. 
@@ -33,7 +32,7 @@ Adjust Build Path if necessary.
 
 Adjust the connection settings for the database in the application context XML.
 
-`eStore/src/main/webapp/WEB-INF/application-context.xml`
+`src/main/webapp/WEB-INF/application-context.xml`
 
 ```xml
 	<bean id="dataSource"
