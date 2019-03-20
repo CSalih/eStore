@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.estore.dao.CustomerOrderDao;
 import com.estore.model.Cart;
@@ -13,6 +14,7 @@ import com.estore.service.CartService;
 import com.estore.service.CustomerOrderService;
 
 @Service
+@Transactional
 public class CustomerOrderServiceImpl implements CustomerOrderService {
 
 	@Autowired

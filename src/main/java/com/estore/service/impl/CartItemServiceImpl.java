@@ -2,6 +2,7 @@ package com.estore.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.estore.dao.CartItemDao;
 import com.estore.model.Cart;
@@ -9,6 +10,7 @@ import com.estore.model.CartItem;
 import com.estore.service.CartItemService;
 
 @Service
+@Transactional
 public class CartItemServiceImpl implements CartItemService {
 
 	@Autowired

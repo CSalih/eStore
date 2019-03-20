@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.estore.dao.ProductDao;
 import com.estore.model.Product;
 import com.estore.service.ProductService;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
