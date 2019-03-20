@@ -26,7 +26,7 @@ Based on https://github.com/KevalSanghavi/eStore
 
 File > Import > Maven > Existing Maven Projects
 
-Adjust Build Path if necessary.
+Adjust Build Path if necessary (JDK8).
 
 **Configure Database**
 
