@@ -56,8 +56,8 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service
-				users-by-username-query="SELECT username, password, enabled FROM users WHERE username = ?"
-				authorities-by-username-query="SELECT username, authority From authorities WHERE username = ?"
+				users-by-username-query="SELECT username, password, enabled FROM Users WHERE username = ?"
+				authorities-by-username-query="SELECT username, authority From Authorities WHERE username = ?"
 				data-source-ref="dataSource" />
 			<security:password-encoder hash="bcrypt" />
 		</security:authentication-provider>

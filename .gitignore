@@ -5,3 +5,5 @@ Servers/
 eStore/.settings/
 eStore/target/
 /target/
+/.idea/
+*.iml
