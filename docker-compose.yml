@@ -1,0 +1,16 @@
+version: '3'
+services:
+  eStore-Database:
+    container_name: eStore-Database
+    image: mysql:5.6.47
+    environment:
+      MYSQL_DATABASE: estore
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - 3306:3306
+    networks:
+      - net-database
+
+# Networks
+networks:
+  net-database:
