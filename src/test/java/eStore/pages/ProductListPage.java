@@ -21,7 +21,12 @@ public class ProductListPage {
     }
 
     public int searchProduct(String testProd) {
-        driver.findElement(By.cssSelector("input")).sendKeys("AirPods");
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(By.cssSelector("input")))
+                .sendKeys("AirPods");
+
+        // Todo: Wait for it
         List<WebElement> elements = driver.findElements(By.xpath("//td[contains(.,\'" + testProd + "\')]"));
         return  elements.size();
     }
@@ -34,6 +39,7 @@ public class ProductListPage {
                 .click();
 
         try {
+            // Still with WebDriverWait not working
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
