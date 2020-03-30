@@ -1,14 +1,15 @@
 package eStore;
 
 import eStore.pages.AllOrderPage;
+import eStore.pages.CartPage;
 import eStore.pages.LoginPage;
+import eStore.pages.ProductListPage;
 import eStore.utils.SetupWebDriver;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
-
-import static org.junit.Assert.assertNotNull;
 
 public class AllOrderTest extends SetupWebDriver {
 
@@ -20,13 +21,14 @@ public class AllOrderTest extends SetupWebDriver {
 
     @Test
     public void createOrderTest() {
-        AllOrderPage page = new AllOrderPage(driver);
+        ProductListPage page = new ProductListPage(driver);
+        Alert alert = page.addToCart(1);
+        Assert.assertEquals("Product successfully added to the cart!", alert.getText());
+        alert.dismiss();
 
-        String message = page.addToCart();
-        Assert.assertEquals(message, "Product successfully added to the cart!");
-
-        WebElement element = page.checkoutOrder();
-        Assert.assertEquals(element, "Thank you for your business!");
+        CartPage cartPage = new CartPage(driver);
+        WebElement element = cartPage.checkoutOrder();
+        Assert.assertEquals("Thank you for your business!", element.getText());
     }
 
     @Test

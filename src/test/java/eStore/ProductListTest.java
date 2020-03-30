@@ -6,7 +6,6 @@ import eStore.pages.ProductListPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -26,12 +25,7 @@ public class ProductListTest extends SetupWebDriver {
     public void searchProductTest() {
         int expected = 1;
 
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-
-
         ProductListPage page = new ProductListPage(driver);
-        Assert.assertEquals(expected, page.searchProduct("TestProd"));
+        Assert.assertEquals(expected, page.searchProduct("AirPods"));
     }
-
-
 }

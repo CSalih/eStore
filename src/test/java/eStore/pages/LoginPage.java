@@ -2,6 +2,8 @@ package eStore.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
     private final WebDriver driver;
@@ -21,10 +23,19 @@ public class LoginPage {
      * @param password
      * @return HomePage object
      */
-    public void login(String userName, String password) {
+    public void login(String userName, String password){
         driver.get("http://localhost:8080/eStore/login/");
-        driver.findElement(usernameBy).sendKeys(userName);
-        driver.findElement(passwordBy).sendKeys(password);
-        driver.findElement(signinBy).click();
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(usernameBy))
+                .sendKeys(userName);
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(passwordBy))
+                .sendKeys(password);
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(signinBy))
+                .click();
     }
 }

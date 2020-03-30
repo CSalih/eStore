@@ -4,6 +4,8 @@ import eStore.utils.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductInventoryPage {
 
@@ -21,17 +23,29 @@ public class ProductInventoryPage {
      */
     public void editProductName(int row, String newProductName) {
         WebElement editIcon = getAction(row, 3);
-        editIcon.click();
 
-        // Change product name
-        driver.findElement(By.id("name")).clear();
-        driver.findElement(By.id("name")).sendKeys(newProductName);
-        driver.findElement(By.xpath("//input[@value='Submit']")).click();
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(editIcon))
+                .click();
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("name")))
+                .clear();
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("name")))
+                .sendKeys(newProductName);
+
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value='Submit']")))
+                .click();
     }
 
     public void delete(int row) {
         WebElement deleteIcon = getAction(row, 3);
-        deleteIcon.click();
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(deleteIcon))
+                .click();
     }
 
     public String getProductName(int row) {
@@ -47,7 +61,8 @@ public class ProductInventoryPage {
      */
     private WebElement getCell(int row, int column) {
         String xpath = String.format("//table[@id='DataTables_Table_0']/tbody/tr[%d]/td[%d]", row, column);
-        return driver.findElement(By.xpath(xpath));
+        return new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
 
@@ -60,7 +75,9 @@ public class ProductInventoryPage {
         int column = 6;
         String xpath = String.format("//table[@id='DataTables_Table_0']/tbody/tr[%d]/td[%d]/a[%d]/span",
                 row, column, type);
-        return driver.findElement(By.xpath(xpath));
+
+        return new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public int getRowCount() {

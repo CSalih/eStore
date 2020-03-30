@@ -5,6 +5,8 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public abstract class SetupWebDriver {
     protected static WebDriver driver;
 
@@ -16,6 +18,8 @@ public abstract class SetupWebDriver {
 
         driver = new ChromeDriver();
         driver.get("http://localhost:8080/eStore");
+
+        driver.manage().timeouts().implicitlyWait(100, TimeUnit.MILLISECONDS);
     }
 
     @AfterClass
