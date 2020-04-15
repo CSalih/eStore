@@ -57,4 +57,11 @@ public class ProductListPage {
     public int getRowCount() {
         return DataTable.getRowCount(driver);
     }
+
+    public boolean isInProductListPage() {
+        WebElement element =  new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(.,'All Products')]")));
+
+        return element != null;
+    }
 }

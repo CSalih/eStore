@@ -39,4 +39,10 @@ public class CartPage {
         return elements;
     }
 
+    public boolean isInCartPage() {
+        WebElement element =  new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[contains(.,'Cart')]")));
+
+        return element != null;
+    }
 }
