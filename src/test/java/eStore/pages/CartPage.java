@@ -45,4 +45,12 @@ public class CartPage {
 
         return element != null;
     }
+
+    public boolean discountApplied() {
+        return false;
+    }
+
+    public boolean savedMoneyDisplayed() {
+        return false;
+    }
 }
