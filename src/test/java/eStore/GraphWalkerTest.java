@@ -18,7 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class GraphWalkerTest extends ExecutionContext implements AddToCart {
     private static WebDriver driver;
 
-    private Alert alert;
+    private boolean addedToCart;
     private CartPage cartPage;
     private LoginPage loginPage;
     private ProductListPage productListPage;
@@ -43,7 +43,7 @@ public class GraphWalkerTest extends ExecutionContext implements AddToCart {
 
     @Override
     public void addToCart() {
-        alert = productListPage.addToCart(1);
+        addedToCart = productListPage.addToCart(1);
     }
 
     @Override
@@ -74,9 +74,7 @@ public class GraphWalkerTest extends ExecutionContext implements AddToCart {
 
     @Override
     public void AddedToCart() {
-        Assert.assertNotNull("Run addToCart first!", alert);
-        Assert.assertEquals("Product successfully added to the cart!", alert.getText());
-        alert.dismiss();
+        Assert.assertTrue(addedToCart);
     }
 
     @AfterExecution

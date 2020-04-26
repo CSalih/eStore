@@ -1,6 +1,7 @@
 package eStore.pages;
 
 import eStore.utils.DataTable;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,7 +32,7 @@ public class ProductListPage {
         return  elements.size();
     }
 
-    public Alert addToCart(int row) {
+    public boolean addToCart(int row) {
         String xpath = String.format("//table[@id=\'DataTables_Table_0\']/tbody/tr[%d]/td[6]/a[1]/span", row);
 
         new WebDriverWait(driver, 5)
@@ -49,9 +50,14 @@ public class ProductListPage {
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(.,'Order Now')]")))
                 .click();
 
-        return new WebDriverWait(driver, 5)
+        Alert alert = new WebDriverWait(driver, 5)
                 .ignoring(NoAlertPresentException.class)
                 .until(ExpectedConditions.alertIsPresent());
+
+        boolean result = alert.getText().equals("Product successfully added to the cart!");
+        alert.dismiss();
+
+        return result;
     }
 
     public int getRowCount() {

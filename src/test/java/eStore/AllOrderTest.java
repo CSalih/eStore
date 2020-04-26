@@ -8,7 +8,6 @@ import eStore.utils.SetupWebDriver;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 
 public class AllOrderTest extends SetupWebDriver {
@@ -22,9 +21,7 @@ public class AllOrderTest extends SetupWebDriver {
     @Test
     public void createOrderTest() {
         ProductListPage page = new ProductListPage(driver);
-        Alert alert = page.addToCart(1);
-        Assert.assertEquals("Product successfully added to the cart!", alert.getText());
-        alert.dismiss();
+        Assert.assertTrue(page.addToCart(1));
 
         CartPage cartPage = new CartPage(driver);
         WebElement element = cartPage.checkoutOrder();
