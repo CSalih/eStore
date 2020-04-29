@@ -1,10 +1,23 @@
-.metadata/
-.recommenders/
 RemoteSystemsTempFiles/
 Servers/
-eStore/.settings/
-eStore/target/
-/target/
-/.idea/
+target/
+
+### IntelliJ IDEA ###
+.idea/
 *.iml
 *.exe
+
+### Eclipse ###
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders/
+.project
+.classpath
