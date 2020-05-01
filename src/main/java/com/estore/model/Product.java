@@ -44,7 +44,7 @@ public class Product implements Serializable {
 	private String productManufacturer;
 
 	@Transient
-	private MultipartFile productImage;
+	private transient MultipartFile productImage;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore

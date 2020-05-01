@@ -101,11 +101,11 @@ public class ConfirmedOrder implements Serializable {
 	}
 
 	public Date getOrderDate() {
-		return orderDate;
+		return new Date(orderDate.getTime());
 	}
 
 	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+		this.orderDate = new Date(orderDate.getTime());
 	}
 
 	public boolean getIsFulfilled() {
@@ -117,11 +117,11 @@ public class ConfirmedOrder implements Serializable {
 	}
 
 	public Date getFulfillmentDate() {
-		return fulfillmentDate;
+		return new Date(fulfillmentDate.getTime());
 	}
 
 	public void setFulfillmentDate(Date fulfillmentDate) {
-		this.fulfillmentDate = fulfillmentDate;
+		this.fulfillmentDate = new Date(fulfillmentDate.getTime());
 	}
 
 }
