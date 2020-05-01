@@ -1,5 +1,6 @@
 package com.estore.controller;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,5 +31,13 @@ public class HomeController {
 	@RequestMapping("/about")
 	public String about() {
 		return "about";
+	}
+
+	private void test() {
+		try {
+			throw new Exception("Just kidding");
+		} catch (Exception e) {
+
+		}
 	}
 }
