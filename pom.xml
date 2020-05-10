@@ -256,7 +256,7 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>3.1.1</version>
 				<configuration>
-					<configLocation>google_checks.xml</configLocation>
+					<configLocation>src/test/resources/eStore-checkstyle.xml</configLocation>
 				</configuration>
 			</plugin>
 		</plugins>
