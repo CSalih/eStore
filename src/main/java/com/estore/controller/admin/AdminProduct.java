@@ -119,4 +119,15 @@ public class AdminProduct {
 
 		return "redirect:/admin/productInventory";
 	}
+
+
+	/**
+	 * Deletes a product
+	 * @param productId The id of the Product
+	 */
+	@RequestMapping(value = "/product/{productId}", method = RequestMethod.DELETE)
+	public void deleteProduct(@PathVariable int productId) {
+		Product product = productService.getProductById(productId);
+		productService.deleteProduct(product);
+	}
 }
