@@ -1,14 +1,15 @@
 image: maven:3-jdk-8
 
-services:
-  - mysql:latest
 
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-  # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+
+services:
+  - mysql:latest
 
 cache:
   paths:
@@ -18,7 +19,7 @@ cache:
 build:
   stage: build
   script:
-    - mvn compile
+    - mvn compile -DskipTests
 
 test:
   stage: test
@@ -26,3 +27,10 @@ test:
     - mvn graphwalker:generate-test-sources
     - mvn pmd:pmd
     - mvn test
+
+package:
+  stage: package
+  script:
+    - docker login -u estore-gitlab-ci -p $CI_TOKEN docker.uibk.ac.at:443
+    - docker build -t docker.uibk.ac.at:443/csav4645/sq-estore ./target/*.war
+    - docker push docker.uibk.ac.at:443/csav4645/sq-estore

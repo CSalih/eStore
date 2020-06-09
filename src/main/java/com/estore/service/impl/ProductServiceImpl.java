@@ -36,4 +36,11 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteProduct(Product product) {
 		productDao.deleteProduct(product);
 	}
+
+	public double calculateTotalStockValue() {
+		List<Product> products = productDao.getProductList();
+		return products.parallelStream()
+				.mapToDouble(x -> x.getUnitInStock() * x.getProductPrice())
+				.sum();
+	}
 }

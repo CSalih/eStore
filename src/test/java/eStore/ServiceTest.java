@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import com.estore.model.Customer;
 import com.estore.service.CustomerService;
+import com.estore.service.ProductService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +29,9 @@ public class ServiceTest {
    @Autowired
    private CustomerService customerService;
 
+   @Autowired
+   private ProductService productService;
+
    @Test
    public void junitTestSetupWorks() {
       assertNotNull(customerOrderService);
@@ -38,5 +42,17 @@ public class ServiceTest {
       List<Customer> list = customerService.getAllCustomers();
 
       Assert.assertEquals(1, list.size());
+   }
+
+   /**
+    * Calculates the sum of all products
+    */
+   @Test
+   public void totalStockValueTest() {
+      double expected = 1249390.0;
+      double actual = productService.calculateTotalStockValue();
+      double precision = 0.05;
+
+      Assert.assertEquals(expected, actual, precision);
    }
 }
