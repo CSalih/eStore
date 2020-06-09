@@ -8,7 +8,7 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
   # Configure mysql environment variables (https://hub.docker.com/_/mysql/)
   MYSQL_DATABASE: "estore"
-  MYSQL_ROOT_PASSWORD: ""
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
 cache:
   paths:
@@ -18,10 +18,11 @@ cache:
 build:
   stage: build
   script:
-    - mvn clean install
+    - mvn compile
 
 test:
   stage: test
   script:
+    - mvn graphwalker:generate-test-sources
     - mvn pmd:pmd
     - mvn test
