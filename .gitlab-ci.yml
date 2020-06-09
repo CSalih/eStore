@@ -18,10 +18,10 @@ cache:
 build:
   stage: build
   script:
-    - mvn $MAVEN_CLI_OPTS clean install
+    - mvn clean install
 
 test:
   stage: test
   script:
     - mvn pmd:pmd
-    - mvn $MAVEN_CLI_OPTS test
+    - mvn test
