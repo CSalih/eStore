@@ -29,7 +29,7 @@ test:
     - mvn test
 
 package:
-  stage: package
+  stage: deploy
   script:
     - docker login -u estore-gitlab-ci -p $CI_TOKEN docker.uibk.ac.at:443
     - docker build -t docker.uibk.ac.at:443/csav4645/sq-estore ./target/*.war
