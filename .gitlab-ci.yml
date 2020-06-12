@@ -15,7 +15,7 @@ build:
 test:
   stage: test
   script:
-    - mvn graphwalker:generate-test-sources
+    - mvn graphwalker:test
     - mvn pmd:pmd
     - mvn test
 
