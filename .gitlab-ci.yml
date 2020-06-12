@@ -10,12 +10,13 @@ services:
 build:
   stage: build
   script:
-    - mvn compile -DskipTests
-
+    - mvn package -DskipTests
+  artifacts:
+    paths:
+      - target/eStore*.jar
 test:
   stage: test
   script:
-    - mvn graphwalker:test
     - mvn pmd:pmd
     - mvn test
 

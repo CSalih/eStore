@@ -229,10 +229,10 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>test</id>
-						<phase>test</phase>
+						<id>generate-test-sources</id>
+						<phase>generate-test-sources</phase>
 						<goals>
-							<goal>test</goal>
+							<goal>generate-test-sources</goal>
 						</goals>
 					</execution>
 				</executions>
