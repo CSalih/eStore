@@ -14,17 +14,9 @@ build:
   artifacts:
     paths:
       - target/eStore*.jar
-#test:
-#  stage: test
-#  script:
-#    - mvn pmd:pmd
-#    - mvn pmd:cpd
-#    - mvn test
-
-package:
-  stage: deploy
-  image: docker
+test:
+  stage: test
   script:
-    - docker login -u $CI_REGISTRY_USER -p CI_REGISTRY_PASSWORD docker.uibk.ac.at:443
-    - docker build -t docker.uibk.ac.at:443/csav4645/sq-estore ./target/*.war
-    - docker push docker.uibk.ac.at:443/csav4645/sq-estore
+    - mvn pmd:pmd
+    - mvn pmd:cpd
+    - mvn test
