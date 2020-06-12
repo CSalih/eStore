@@ -25,6 +25,6 @@ package:
   stage: deploy
   image: docker
   script:
-    - docker login -u estore-gitlab-ci -p $CI_TOKEN docker.uibk.ac.at:443
+    - docker login -u $CI_REGISTRY_USER -p CI_REGISTRY_PASSWORD docker.uibk.ac.at:443
     - docker build -t docker.uibk.ac.at:443/csav4645/sq-estore ./target/*.war
     - docker push docker.uibk.ac.at:443/csav4645/sq-estore
