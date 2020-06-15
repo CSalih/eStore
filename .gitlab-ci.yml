@@ -12,8 +12,7 @@ variables:
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
 mysql-init:
-  services:
-    - mysql:latest
+  image: mysql
   stage: init
   script:
     - mysql -u root $MYSQL_DATABASE < src/test/resources/schema.sql
