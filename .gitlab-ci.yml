@@ -37,4 +37,4 @@ PMD:
 test:
   stage: test
   script:
-    - mvn test
+    - mvn -B install
