@@ -31,7 +31,7 @@ build:
     - mvn package -DskipTests
   artifacts:
     paths:
-      - target/eStore*.jar
+      - target/estore*.jar
 
 PMD:
   stage: static-analytic
