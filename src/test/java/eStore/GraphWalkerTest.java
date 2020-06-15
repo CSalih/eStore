@@ -8,12 +8,14 @@ import org.graphwalker.core.machine.ExecutionContext;
 import org.graphwalker.java.annotation.AfterExecution;
 import org.graphwalker.java.annotation.GraphWalker;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
 
+@Ignore
 @GraphWalker(value = "random(reached_vertex(CartPage))", start = "LoginPage")
 public class GraphWalkerTest extends ExecutionContext implements AddToCart {
     private static WebDriver driver;

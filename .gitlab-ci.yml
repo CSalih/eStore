@@ -39,6 +39,7 @@ PMD:
   script:
     - mvn pmd:pmd
     - mvn pmd:cpd
+  allow_failure: true
 
 test:
   stage: test
@@ -46,10 +47,14 @@ test:
     - mvn -B install
 
 release:
-  stage: deploy
-  name: target/eStore.war 1.0
-  assets:
-    - name: eStore.war
-      path: target/eStore.war
-    - name: PMD-${APP_VERSION}.xml
-      path: target/site/pmd.html
+  stage: release
+  only: [tags]
+  script:
+    - echo "Adding Release"
+    release:
+      name: eStore $CI_COMMIT_TAG
+      assets:
+        - name: eStore.war
+          path: target/eStore.war
+        - name: PMD.html
+          path: target/site/pmd.html

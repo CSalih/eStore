@@ -7,9 +7,11 @@ import eStore.pages.ProductListPage;
 import eStore.utils.SetupWebDriver;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
+@Ignore
 public class AllOrderTest extends SetupWebDriver {
 
     @BeforeClass

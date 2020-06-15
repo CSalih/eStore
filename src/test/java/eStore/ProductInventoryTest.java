@@ -5,9 +5,11 @@ import eStore.pages.LoginPage;
 import eStore.pages.ProductInventoryPage;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 
+@Ignore
 public class ProductInventoryTest extends SetupWebDriver {
 
     @BeforeClass
