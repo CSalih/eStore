@@ -11,10 +11,9 @@ variables:
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
-services:
-  - mysql:latest  
-
 mysql-init:
+  services:
+    - mysql:latest
   stage: init
   script:
     - mysql -u root $MYSQL_DATABASE < src/test/resources/schema.sql
