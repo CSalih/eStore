@@ -6,6 +6,7 @@ import com.estore.model.Customer;
 import com.estore.service.CustomerService;
 import com.estore.service.ProductService;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,6 +19,7 @@ import com.estore.service.CustomerOrderService;
 
 import java.util.List;
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationTestContext.xml"})
 @Transactional
