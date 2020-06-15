@@ -5,16 +5,15 @@ stages:
   - build
   - static-analytic
   - test
-  - release
-  
-cache:
-  paths:
-   - ./.m2/repository
 
 variables:
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   MAVEN_OPTS: "-Dmaven.repo.local=./.m2/repository"
+  
+cache:
+  paths:
+   - ./.m2/repository
 
 mysql-init:
   services:
@@ -45,16 +44,3 @@ test:
   stage: test
   script:
     - mvn -B install
-
-release:
-  stage: release
-  only: [tags]
-  script:
-    - echo "Adding Release"
-    release:
-      name: eStore $CI_COMMIT_TAG
-      assets:
-        - name: eStore.war
-          path: target/eStore.war
-        - name: PMD.html
-          path: target/site/pmd.html
