@@ -9,8 +9,7 @@ stages:
 variables:
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-  MAVEN_OPTS: "-Dmaven.repo.local=./.m2/repository"
-  
+
 mysql-init:
   services:
     - mysql
