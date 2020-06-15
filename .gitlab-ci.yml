@@ -15,9 +15,11 @@ mysql-init:
     - mysql
   image: mysql
   stage: init
+  before_script:
+    - mysql --version
   script:
-    - mysql -u root $MYSQL_DATABASE < src/test/resources/schema.sql
-    - mysql -u root $MYSQL_DATABASE < src/test/resources/import.sql
+    - mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/schema.sql
+    - mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/import.sql
 
 build:
   stage: build
