@@ -5,10 +5,15 @@ stages:
   - build
   - static-analytic
   - test
+  
+cache:
+  paths:
+   - ./.m2/repository
 
 variables:
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  MAVEN_OPTS: "-Dmaven.repo.local=./.m2/repository"
 
 mysql-init:
   services:
