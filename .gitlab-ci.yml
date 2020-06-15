@@ -18,8 +18,8 @@ mysql-init:
   before_script:
     - mysql --version
   script:
-    - mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/schema.sql
-    - mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/import.sql
+    - mysql --host=mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/schema.sql
+    - mysql --host=mysql --user=root "${MYSQL_DATABASE}" < src/test/resources/import.sql
 
 build:
   stage: build
