@@ -12,7 +12,7 @@ services:
     ports:
       - 80:8080
     networks:
-      - net-backend
+      - net-database
 
   eStore-Database:
     container_name: eStore-Database
@@ -24,13 +24,12 @@ services:
       - 3306:3306
     networks:
       - net-database
-      - net-backend
     volumes:
       - db-eStore:/var/lib/mysql
-      healthcheck:
-        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-        timeout: 20s
-        retries: 10
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
 # Store database data
 volumes:
@@ -38,5 +37,4 @@ volumes:
 
 # Networks
 networks:
-  net-backend:
   net-database:

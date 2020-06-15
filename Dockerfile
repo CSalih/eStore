@@ -6,8 +6,8 @@ WORKDIR /app
 ADD pom.xml .
 RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "verify", "clean", "--fail-never"]
 ADD . .
-RUN ["mvn","clean","install", "-DskipTests=true"]
+RUN ["mvn", "package", "-DskipTests=true"]
 
 # Run application
 FROM tomcat:8.5.43-jdk8
-COPY --from=maven_builder ./wc_admin/target/*.war /usr/local/tomcat/webapps
+COPY --from=maven_builder ./target/eStore.war /usr/local/tomcat/webapps
