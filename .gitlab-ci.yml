@@ -5,13 +5,14 @@ stages:
   - build
   - static-analytic
   - test
-  
 
 variables:
   MYSQL_DATABASE: "estore"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
 mysql-init:
+  services:
+    - mysql
   image: mysql
   stage: init
   script:
