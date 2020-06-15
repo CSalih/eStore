@@ -5,6 +5,7 @@ stages:
   - build
   - static-analytic
   - test
+  - release
   
 cache:
   paths:
@@ -31,7 +32,7 @@ build:
     - mvn package -DskipTests
   artifacts:
     paths:
-      - target/estore*.war
+      - target/eStore.war
 
 PMD:
   stage: static-analytic
@@ -46,9 +47,9 @@ test:
 
 release:
   stage: deploy
-  name: sq-estore Release 1.0
+  name: target/eStore.war 1.0
   assets:
     - name: eStore.war
-      path: target/estore*.war
+      path: target/eStore.war
     - name: PMD-${APP_VERSION}.xml
       path: target/site/pmd.html
