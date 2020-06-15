@@ -38,3 +38,12 @@ test:
   stage: test
   script:
     - mvn -B install
+
+release:
+  stage: deploy
+  name: sq-estore Release 1.0
+  assets:
+    - name: eStore.war
+      path: target/estore*.war
+    - name: PMD-${APP_VERSION}.xml
+      path: target/site/pmd.html
